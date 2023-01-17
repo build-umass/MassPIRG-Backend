@@ -16,6 +16,7 @@ And then serve the application locally:
 
 ```
 $ node app.js
+$ npx node app.js (for windows)
 ```
 
 When you are done, press control-c to stop the server.
