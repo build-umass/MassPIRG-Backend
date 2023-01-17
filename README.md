@@ -19,4 +19,11 @@ $ node app.js
 $ npx node app.js (for windows)
 ```
 
+OR
+
+Install this dependency: $ npm install -g nodemon
+then serve the application:
+$ nodemon app.js (this allows the server to restart automatically every time you save changes)
+
+
 When you are done, press control-c to stop the server.
