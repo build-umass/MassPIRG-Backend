@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import authRoute from './routes/auth.js';
 
 
 const app = express();
@@ -23,6 +24,9 @@ db.once("open", () => {
 app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, 'build')));
 app.use(cors());
+
+app.use('/api/auth', authRoute);
+
 
 app.listen(PORT, () => {
     console.log(`SERVING ON PORT ${PORT}`);

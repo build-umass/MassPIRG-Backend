@@ -1,5 +1,5 @@
-import { userSchemaRegister, userSchemaLogin, habitSchemaInput } from "./schemas.js";
-import User from "./models/user.js";
+import { userSchemaRegister, userSchemaLogin } from "../schemas.js";
+import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 
 //Check if req.body is valid input for register
