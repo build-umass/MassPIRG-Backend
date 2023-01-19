@@ -7,16 +7,16 @@ export const validateUserRegister = async (req, res, next) => {
     const { error } = userSchemaRegister.validate(req.body);
     if (error)
     {
-        return res.status(200).send({
-            success: false,
+        return res.status(400).send({
+            // success: false,
             message: error.details[0].message,
         });
     }
     let foundUser = await User.findOne({ email: req.body.email });
     if (foundUser)
     {
-        return res.status(200).send({
-            success: false,
+        return res.status(400).send({
+            // success: false,
             message: "This email is already associated with another account. Please try again with a different email",
         });
     }
@@ -28,8 +28,8 @@ export const validateUserLogin = (req, res, next) => {
     const { error } = userSchemaLogin.validate(req.body);
     if (error)
     {
-        return res.status(200).send({
-            success: false,
+        return res.status(400).send({
+            // success: false,
             message: error.details[0].message,
         });
     }

@@ -26,7 +26,7 @@ export const registerUser = async (req, res) => {
         const savedUser = await user.save();
         const accessToken = generateAccessToken(savedUser);
         res.header('accessToken', accessToken).send({
-            success: true,
+            // success: true,
             message: "Register successfully!",
             token: accessToken,
         });
@@ -34,7 +34,7 @@ export const registerUser = async (req, res) => {
     } catch (e)
     {
         return res.status(404).send({
-            success: false,
+            // success: false,
             message: e.message,
         });
     }
@@ -47,8 +47,8 @@ export const loginUser = async (req, res) => {
         const foundUser = await User.findOne({ email: email });
         if (!foundUser)
         {
-            return res.status(200).send({
-                success: false,
+            return res.status(404).send({
+                // success: false,
                 message: "Account does not exist",
             })
         };
@@ -57,8 +57,8 @@ export const loginUser = async (req, res) => {
         const validPass = await bcrypt.compare(password, foundUser.password);
         if (!validPass)
         {
-            return res.status(200).send({
-                success: false,
+            return res.status(403).send({
+                // success: false,
                 message: "Incorrect password or email address",
             })
         };
