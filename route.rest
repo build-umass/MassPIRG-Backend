@@ -1,0 +1,13 @@
+GET http://localhost:5001/api/eboard/
+
+# POST http://localhost:5001/api/eboard/
+# Content-Type: application/json
+
+# {
+#     "name": "Aryan",
+#     "role": "Treasurer",
+#     "class": 2025,
+#     "major": "Computer Science",
+#     "email": "aryannair@umass.edu",
+#     "description": "New Member"
+# }

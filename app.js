@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import authRoute from './routes/auth.js';
+import eBoardRouter from './routes/eBoard.js';
 
 
 const app = express();
@@ -26,6 +27,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api/auth', authRoute);
+
+app.use('/api/eboard', eBoardRouter); //'localhost:5001/api/eboard'
 
 
 app.listen(PORT, () => {

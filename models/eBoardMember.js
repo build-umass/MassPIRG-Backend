@@ -2,14 +2,32 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const eBoardMemberSchema = new Schema({
-    name: String,   // Ashley Agostinell
-    role: String,   // Chapter Chair
-    class: Number,  // 2023
-    major: String,  // Psychology and Linguistics Major
-    email: String,  // amagostinell@umass.edu
-    description: String, // Ashley is the Chair of MASSPIRG Students...
+    name: {
+        type: String,
+        required: true,
+    },   // Ashley Agostinell
+    role: {
+        type: String,
+        required: true,
+    },   // Chapter Chair
+    class: {
+        type: Number,
+        required: true,
+    },  // 2023
+    major: {
+        type: String,
+        required: true,
+    },  // Psychology and Linguistics Major
+    email: {
+        type: String,
+        required: true,
+    },  // amagostinell@umass.edu
+    description: {
+        type: String,
+        required: true,
+    }, // Ashley is the Chair of MASSPIRG Students...
 })
 
-const EBoardMember = mongoose.model('EBoardMember', eBoardMemberSchema);
+const eBoardMember = mongoose.model('EBoardMember', eBoardMemberSchema);
 
-export default User;
+export default eBoardMember;
