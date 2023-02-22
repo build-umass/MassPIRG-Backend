@@ -10,7 +10,7 @@ const eBoardMemberSchema = new Schema({
         type: String,
         required: true,
     },   // Chapter Chair
-    class: {
+    classYear: {
         type: Number,
         required: true,
     },  // 2023
