@@ -34,7 +34,6 @@ export const registerUser = async (req, res) => {
     } catch (e)
     {
         return res.status(404).send({
-            // success: false,
             message: e.message,
         });
     }
@@ -65,15 +64,15 @@ export const loginUser = async (req, res) => {
 
         //Create and assign token:
         const accessToken = generateAccessToken(foundUser);
-        const refreshToken = generateRefreshToken(foundUser);
-        res.cookie("refreshToken", refreshToken, {
-            httpOnly: true,
-            secure: false, //true when deploy
-            path: '/',
-            sameSite: "strict",
-        })
+        // const refreshToken = generateRefreshToken(foundUser);
+        // res.cookie("refreshToken", refreshToken, {
+        //     httpOnly: true,
+        //     secure: false, //true when deploy
+        //     path: '/',
+        //     sameSite: "strict",
+        // })
         res.header('accessToken', accessToken).send({
-            success: true,
+            // success: true,
             message: "Logged in successfully!",
             token: accessToken,
         });

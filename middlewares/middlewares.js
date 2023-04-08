@@ -37,23 +37,26 @@ export const validateUserLogin = (req, res, next) => {
 }
 
 export const verifyToken = async (req, res, next) => {
-    const token = req.header("accessToken");
+    const token = req.header("Authorization");
     // console.log(token);
     if (!token)
     {
-        return res.status(401).send("Access denied");
+        return res.status(401).send({
+            message: "Access denied",
+        });
     }
     try
     {
-        const verified = jwt.verify(token, process.env.JWT_ACCESS_TOKEN_SECRET);
+        const userId = jwt.verify(token, process.env.JWT_ACCESS_TOKEN_SECRET);
         //Decode the token to find the user data (id), then use this id to find the user data in database
         // console.log(verified);
-        req.user = verified;
+        req.userId = userId;
         // console.log(req.user);
         next();
     } catch (e)
     {
-        console.log(e);
-        return res.status(403).send("Invalid token");
+        return res.status(403).send({
+            message: "Invalid token"
+        });
     }
 }
