@@ -1,6 +1,8 @@
 import express from 'express';
 import EBoardMember from '../models/eBoardMember.js';
 import { getMembers, createMember, deleteMember } from '../controllers/eBoardController.js';
+import { verifyToken } from '../middlewares/middlewares.js';
+
 const router = express.Router();
 
 //get all eboard members
@@ -13,7 +15,7 @@ router.get('/', getMembers);
 // });
 
 //create eboard member
-router.post('/', createMember);
+router.post('/', verifyToken, createMember);
 
 //update eboard member
 router.patch('/', (req, res) => {
