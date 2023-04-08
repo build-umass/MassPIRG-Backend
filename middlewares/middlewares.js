@@ -37,14 +37,14 @@ export const validateUserLogin = (req, res, next) => {
 }
 
 export const verifyToken = async (req, res, next) => {
-    const token = req.header("Authorization");
-    // console.log(token);
+    let token = req.header("Authorization");
     if (!token)
     {
         return res.status(401).send({
             message: "Access denied",
         });
     }
+    token = token.split(" ")[1]
     try
     {
         const userId = jwt.verify(token, process.env.JWT_ACCESS_TOKEN_SECRET);
