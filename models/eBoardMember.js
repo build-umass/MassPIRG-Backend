@@ -26,6 +26,9 @@ const eBoardMemberSchema = new Schema({
         type: String,
         required: true,
     }, // Ashley is the Chair of MASSPIRG Students...
+    image: {
+        type: String,
+    }
 })
 
 const eBoardMember = mongoose.model('EBoardMember', eBoardMemberSchema);
