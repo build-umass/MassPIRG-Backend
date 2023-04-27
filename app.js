@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import authRoute from './routes/auth.js';
 import eBoardRouter from './routes/eBoard.js';
-
+import s3Router from './routes/s3.js';
 
 const app = express();
 
@@ -30,6 +30,7 @@ app.use('/api/auth', authRoute);
 
 app.use('/api/eboard', eBoardRouter); //'localhost:5001/api/eboard'
 
+app.use('/api/s3', s3Router); //'localhost:5001/api/s3'
 
 app.listen(PORT, () => {
     console.log(`SERVING ON PORT ${PORT}`);
