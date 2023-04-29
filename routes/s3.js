@@ -1,5 +1,6 @@
 import express from 'express';
 import { imageUpload } from '../controllers/s3Controller.js';
+import { verifyToken } from '../middlewares/middlewares.js';
 import aws from 'aws-sdk';
 import multer from 'multer';
 import multerS3 from 'multer-s3';
@@ -34,6 +35,6 @@ const upload = multer({
 });
 
 const router = express.Router();
-router.post('/upload', upload.single('image'), imageUpload)
+router.post('/upload', verifyToken, upload.single('image'), imageUpload)
 
 export default router;

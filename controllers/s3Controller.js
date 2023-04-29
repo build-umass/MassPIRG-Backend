@@ -1,3 +1,3 @@
 export const imageUpload = (req, res, next) => {
-  res.status(200).send({ success: true, message: 'Image uploaded successfully.' });
+  res.status(200).send({ success: true, message: 'Image uploaded successfully.', data: req.file.location });
 }

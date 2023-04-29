@@ -14,7 +14,7 @@ export const getMembers = async (req, res) => {
 }
 
 export const createMember = async (req, res) => {
-    const { name, role, classYear, major, email, description } = req.body;
+    const { name, role, classYear, major, email, description, image } = req.body;
     const eBoardMember = new EBoardMember({
         name: name,
         role: role,
@@ -22,6 +22,7 @@ export const createMember = async (req, res) => {
         major: major,
         email: email,
         description: description,
+        image: image,
     });
     try {
         const newMember = await eBoardMember.save();
