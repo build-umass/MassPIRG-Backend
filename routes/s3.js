@@ -1,5 +1,5 @@
 import express from 'express';
-import { imageUpload } from '../controllers/s3Controller.js';
+import { imageUpload, imageDelete } from '../controllers/s3Controller.js';
 import { verifyToken } from '../middlewares/middlewares.js';
 import aws from 'aws-sdk';
 import multer from 'multer';
@@ -34,22 +34,8 @@ const upload = multer({
   })
 });
 
-const deleteImage = async(name) => {
-  const params = {
-    Bucket: 'masspirg-test',
-    Key: name 
-}
-  try {
-    await s3.headObject(params).promise()
-    console.log("File Found in S3")
-    s3.deleteObject(params)
-    console.log("file deleted Successfully")
-  } catch (err) {
-      console.log("File not Found ERROR : " + err.code)
-  }
-}
-
 const router = express.Router();
 router.post('/upload', verifyToken, upload.single('image'), imageUpload)
+router.delete('/delete', verifyToken, imageDelete)
 
 export default router;
