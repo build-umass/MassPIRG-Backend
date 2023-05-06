@@ -34,6 +34,21 @@ const upload = multer({
   })
 });
 
+const deleteImage = async(name) => {
+  const params = {
+    Bucket: 'masspirg-test',
+    Key: name 
+}
+  try {
+    await s3.headObject(params).promise()
+    console.log("File Found in S3")
+    s3.deleteObject(params)
+    console.log("file deleted Successfully")
+  } catch (err) {
+      console.log("File not Found ERROR : " + err.code)
+  }
+}
+
 const router = express.Router();
 router.post('/upload', verifyToken, upload.single('image'), imageUpload)
 
