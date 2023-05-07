@@ -1,5 +1,5 @@
 import express from 'express';
-import { imageUpload } from '../controllers/s3Controller.js';
+import { imageUpload, imageDelete } from '../controllers/s3Controller.js';
 import { verifyToken } from '../middlewares/middlewares.js';
 import aws from 'aws-sdk';
 import multer from 'multer';
@@ -36,5 +36,6 @@ const upload = multer({
 
 const router = express.Router();
 router.post('/upload', verifyToken, upload.single('image'), imageUpload)
+router.delete('/delete', verifyToken, imageDelete)
 
 export default router;
