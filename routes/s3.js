@@ -36,6 +36,6 @@ const upload = multer({
 
 const router = express.Router();
 router.post('/upload', verifyToken, upload.single('image'), imageUpload)
-router.delete('/delete', verifyToken, imageDelete)
+router.delete('/delete/:name', verifyToken, imageDelete)
 
 export default router;
