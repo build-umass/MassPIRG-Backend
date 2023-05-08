@@ -2,8 +2,11 @@
 import mongoose from 'mongoose';
 import { members } from './seedsHelper.js'
 import EBoardMember from '../models/eBoardMember.js'
+import dotenv from 'dotenv';
 
-mongoose.connect('mongodb://localhost:27017/masspirg-db');
+dotenv.config();
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/masspirg-db";
+await mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
